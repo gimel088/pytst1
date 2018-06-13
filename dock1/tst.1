@@ -1,0 +1,28 @@
+# Use an official Python runtime as a parent image
+FROM python:alpine
+
+# Set the working directory to /app
+WORKDIR /app
+
+# Copy the current directory contents into the container at /app
+ADD . /app
+
+# Install any needed packages specified in requirements.txt
+RUN pip install --trusted-host pypi.python.org -r requirements.txt
+
+# Make port 3002 available to the world outside this container
+EXPOSE 3002
+
+# docker build -t pytst6 -f tst.1 .
+# docker run -p 3002:3002 pytst6
+
+# Define environment variable
+ENV NAME Mundo
+
+# Run app.py when the container launches
+CMD ["python", "app.py"]
+#from pip._internal import main as _main
+#_main(['install','flask'])
+# import flask
+
+
