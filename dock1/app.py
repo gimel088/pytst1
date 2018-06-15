@@ -1,6 +1,6 @@
 #tst1
 
-from flask import Flask, request
+from flask import Flask, request, redirect
 
 app = Flask(__name__)
 
@@ -24,6 +24,10 @@ def forurl(pageon):
 def show_args():
     m = request.method
     return 'method:' + repr(m) + '. args:' + repr(request.args)
+
+@app.route('/favicon.ico')
+def redir_static():
+	return redirect('static' +  request.path)
 
 if __name__ == '__main__':
     app.run('0.0.0.0',3002)
