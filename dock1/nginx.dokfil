@@ -1,0 +1,28 @@
+# Use an official nginx runtime as a parent image
+FROM nginx:alpine
+
+# Set the working directory to /app
+WORKDIR /app
+
+# Copy the current directory contents into the container at /app
+ADD . /app
+
+copy t1.html /usr/share/nginx/html/
+COPY static/favicon.ico /usr/share/nginx/html/
+
+# Install any needed packages specified in requirements.txt
+# RUN pip install --trusted-host pypi.python.org -r requirements.txt
+
+# Make port 80 available to the world outside this container
+EXPOSE 80
+
+# docker build -t ng1dok -f nginx.dokfil .
+# docker run -p 80:80 -d ng1dok
+
+# Define environment variable
+ENV NAME Mundo
+
+# CMD ["echo", "Hello from nginx"]
+#cmd ["ls", "-ls", "/usr/share/nginx/html/"]
+#cmd ["cat", "/etc/nginx/nginx.conf"]
+#cmd ["nginx", "-V", "-g", "'daemon off'"]
